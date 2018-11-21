@@ -1,0 +1,13 @@
+server:
+  port: 8081
+  session-timeout: 60
+  Name: test-name
+
+dubbo.trace:
+  enabled: true
+  connectTimeout: 60
+  readTimeout: 60
+  flushInterval: 0
+  compressionEnabled: true
+  applicationName: dubbo-zipkin1
+  zipkinUrl: http://47.52.199.51:9411

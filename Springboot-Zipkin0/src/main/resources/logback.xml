@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true">
+    <contextName>zipkin0</contextName>
+    <timestamp key="TIMESTAMP" datePattern="yyyy-MM-dd" />
+    <property name="LOGPATH" value="log" />
+    <springProperty scope="context" name="appName" source="server.Name" defaultValue="localhost.log"/>
+    <!-- 输出到控制台 -->
+    <appender name="stdout" class="ch.qos.logback.core.ConsoleAppender">
+        <layout class="ch.qos.logback.classic.PatternLayout">
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+            </pattern>
+        </layout>
+    </appender>
+
+    <!-- 输出到文件 -->
+    <appender name="fileLog"
+              class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOGPATH}${file.separator}${TIMESTAMP}.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>
+                %d{HH:mm:ss.SSS} [%thread] %-5level %logger{40} - %msg%n
+            </pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>${LOGPATH}${file.separator}all${file.separator}%d{yyyy-MM-dd}.log</fileNamePattern>
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <triggeringPolicy class="ch.qos.logback.core.rolling.SizeBasedTriggeringPolicy">
+            <MaxFileSize>10MB</MaxFileSize>
+        </triggeringPolicy>
+    </appender>
+
+    <!--<appender name="logstash" class="net.logstash.logback.appender.LogstashTcpSocketAppender">
+        <param name="Encoding" value="UTF-8"/>
+        <remoteHost>192.168.1.102</remoteHost>
+        <port>10514</port>
+        &lt;!&ndash; <filter class="com.program.interceptor.ELKFilter"/>&ndash;&gt;//引入过滤类
+        &lt;!&ndash; encoder is required &ndash;&gt;
+        <encoder charset="UTF-8" class="net.logstash.logback.encoder.LogstashEncoder" >
+            <customFields>{"appname":"${appName}"}</customFields>
+        </encoder>
+    </appender>-->
+
+
+    <root level="INFO">
+        <appender-ref ref="fileLog" />
+        <appender-ref ref="stdout"  />
+        <!--<appender-ref ref="logstash"  />-->
+    </root>
+</configuration>
