@@ -1,5 +1,3 @@
-### trace_starter_xing
-
 #### 一、项目介绍
 基于zipkin调用链封装starter实现springmvc、dubbo、restTemplate等实现全链路跟踪 。
 
@@ -16,14 +14,14 @@
 ###### 3、redis和DB等调用：原理相似，可以通过aop在调用前后拦截。
 
 #### 四、安装教程
-##### 1.pom.xml添加maven包
+- 1.pom.xml添加maven包
 > <dependency>
      <groupId>trace.starter</groupId>
      <artifactId>trace-starter</artifactId>
      <version>1.0.2-SNAPSHOT</version> 
    </dependency>
-##### 2.application.yml添加trace配置
-##### 3.在springboot开启注解
+- 2.application.yml添加trace配置
+- 3.在springboot开启注解
 > @EnableTraceAutoConfigurationProperties
 #### 五、博客地址：
 [基于zipkin调用链封装starter实现springmvc、dubbo、restTemplate等实现全链路跟踪 ](https://www.cnblogs.com/wangzhuxing/p/9944135.html)
