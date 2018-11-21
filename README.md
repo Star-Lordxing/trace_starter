@@ -22,6 +22,5 @@
    </dependency>
 2.application.yml添加trace配置
 3.在springboot开启注解
-> @EnableTraceAutoConfigurationProperties
-#### 五、博客地址：
+#### 五、博客地址
 [基于zipkin调用链封装starter实现springmvc、dubbo、restTemplate等实现全链路跟踪 ](https://www.cnblogs.com/wangzhuxing/p/9944135.html)
